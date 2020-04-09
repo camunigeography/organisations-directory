@@ -3,6 +3,12 @@
 This is a PHP application which implements a directory of organisations.
 
 
+Screenshot
+----------
+
+![Screenshot](screenshot.png)
+
+
 Usage
 -----
 
