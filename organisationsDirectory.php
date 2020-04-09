@@ -114,6 +114,68 @@ class organisationsDirectory extends frontControllerApplication
 	}
 	
 	
+	# Database structure definition
+	public function databaseStructure ()
+	{
+		return "
+			CREATE TABLE IF NOT EXISTS `administrators` (
+			  `username` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Username',
+			  `active` enum('','Yes','No') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Yes' COMMENT 'Currently active?',
+			  `privilege` enum('Administrator','Restricted administrator') COLLATE utf8_unicode_ci NOT NULL DEFAULT 'Administrator' COMMENT 'Administrator level',
+			  PRIMARY KEY (`username`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='System administrators';
+			
+			CREATE TABLE IF NOT EXISTS `countries` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT,
+			  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+			  `abbreviatedName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+			
+			CREATE TABLE IF NOT EXISTS `organisations` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique key',
+			  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Name',
+			  `type` enum('','libraries','museums','organisations') COLLATE utf8_unicode_ci NOT NULL COMMENT 'Type',
+			  `englishEquivalent` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'English equivalent of name',
+			  `countryId` int(4) NOT NULL COMMENT 'Country',
+			  `website` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Website',
+			  `contactName` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Contact name',
+			  `address` text COLLATE utf8_unicode_ci COMMENT 'Address',
+			  `email` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'E-mail',
+			  `telephone` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Telephone',
+			  `fax` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Fax',
+			  `openToPublic` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Open to the public? / Opening hours',
+			  `yearOfFoundation` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Year of foundation',
+			  `activities` text COLLATE utf8_unicode_ci COMMENT 'Activities',
+			  `collections` text COLLATE utf8_unicode_ci COMMENT 'Collections',
+			  `publications` text COLLATE utf8_unicode_ci COMMENT 'Publications',
+			  `notes` text COLLATE utf8_unicode_ci COMMENT 'Notes',
+			  `unapproved` int(1) DEFAULT NULL COMMENT 'Hidden (i.e. unapproved/deleted)',
+			  `userId` int(11) DEFAULT NULL COMMENT 'User ID',
+			  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Automatic timestamp',
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+			
+			CREATE TABLE IF NOT EXISTS `settings` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Automatic key (ignored)',
+			  PRIMARY KEY (`id`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Settings';
+			
+			CREATE TABLE IF NOT EXISTS `users` (
+			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Automatic key',
+			  `email` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Your e-mail address',
+			  `password` varchar(255) COLLATE utf8_unicode_ci NOT NULL COMMENT 'Password',
+			  `validationToken` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL COMMENT 'Token for validation or password reset',
+			  `lastLoggedInAt` datetime DEFAULT NULL COMMENT 'Last logged in time',
+			  `validatedAt` datetime DEFAULT NULL COMMENT 'Time when validated',
+			  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp',
+			  PRIMARY KEY (`id`),
+			  UNIQUE KEY `email` (`email`)
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='Users';
+		";
+	}
+	
+	
 	# GUI search box
 	public function guiSearchBox ()
 	{
