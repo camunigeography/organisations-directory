@@ -1,0 +1,42 @@
+# Organisations directory Apache directives
+
+# Load using:
+#	# Organisations directory
+#	Include /path/to/organisations-directory/.httpd.conf.extract
+#	Use MacroOrganisationsDirectory /resources/directory "Organisations directory"
+
+
+# Organisations directory
+<Macro MacroOrganisationsDirectory $baseUrl $description>
+	
+	# Front controller application support
+	Use MacroFrontControllerApplication "$baseUrl/" "$description"
+	
+	# Application routing
+	RewriteRule ^$baseUrl/add.html$ $baseUrl/index.html?action=add [L]
+	RewriteRule ^$baseUrl/$ $baseUrl/index.html?action=home [L,QSA]
+	RewriteRule ^$baseUrl/([a-z]+).html$ $baseUrl/index.html?action=country&item=$1 [L,QSA]
+	RewriteRule ^$baseUrl/([a-z]+)/([a-z]+).html$ $baseUrl/index.html?action=country&item=$2&type=$1 [L,QSA]
+	RewriteRule ^$baseUrl/search/$ $baseUrl/index.html?action=search [L,QSA]
+	RewriteRule ^$baseUrl/search$ $baseUrl/search/ [R]
+	RewriteRule ^$baseUrl/([a-z]+)/search/$ $baseUrl/index.html?action=search&type=$1 [L,QSA]
+	RewriteRule ^$baseUrl/([a-z]+)/search$ $baseUrl/$1/search/ [R]
+	RewriteRule ^$baseUrl/([0-9]+)/edit/$ $baseUrl/index.html?action=edit&id=$1 [L]
+	RewriteRule ^$baseUrl/([0-9]+)/edit$ $baseUrl/edit/$1/ [R]
+	RewriteRule ^$baseUrl/edit/$ $baseUrl/index.html?action=update [L]
+	RewriteRule ^$baseUrl/edit$ $baseUrl/edit/ [R]
+	RewriteRule ^$baseUrl/manager/$ $baseUrl/index.html?action=manager [L,QSA]
+	RewriteRule ^$baseUrl/manager$ $baseUrl/manager/ [R]
+	RewriteRule ^$baseUrl/([0-9]+)/manager/$ $baseUrl/index.html?action=manager&id=$1 [L,QSA]
+	RewriteRule ^$baseUrl/([0-9]+)/manager$ $baseUrl/$1/manager/ [R]
+	RewriteRule ^$baseUrl/([a-z]+)/$ $baseUrl/index.html?action=home&type=$1 [L,QSA]
+	RewriteRule ^$baseUrl/([a-z]+)$ $baseUrl/$1/ [R]
+	RewriteRule ^$baseUrl/data.csv$ $baseUrl/index.html?action=export [L]
+	
+	# Downloads
+	<LocationMatch ^$baseUrl/data.csv$>
+		php_value auto_prepend_file none
+		php_value auto_append_file none
+	</LocationMatch>
+	
+</Macro>

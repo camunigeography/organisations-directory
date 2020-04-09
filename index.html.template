@@ -1,0 +1,19 @@
+<?php
+
+# Define the introductory text
+$settings = array (
+	'applicationName'			=> 'Widgets organisations directory',
+	'password'					=> 'your_password_here',
+	'administratorEmail'		=> 'webmaster@example.com',
+	'organisationName'			=> 'Widgets Organisations Network',
+	'theme'						=> 'widgets',
+	'siteEmail'					=> 'admin@example.com',
+	'feedbackRecipient'			=> array ('admin@example.com', 'webmaster@example.com'),
+	'homePageTextIntroduction'	=> '<p>This directory provides brief details of various widget-related organisations.</p>',
+);
+
+# Create the directory
+require_once ('organisations-directory/organisationsDirectory.php');
+new organisationsDirectory ($settings);
+
+?>

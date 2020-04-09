@@ -1,0 +1,14 @@
+
+#organisationsdirectory p.adminloginlink {float: right;}
+#organisationsdirectory table.countrylisting {margin-top: 15px;}
+#organisationsdirectory table.countrylisting td {vertical-align: top; padding-right: 25px;}
+#organisationsdirectory table.entries {width: 99%;}
+#organisationsdirectory table.entries td p:first-child {margin-top: 0; padding-top: 0;}
+#organisationsdirectory table.entries tr td:first-child {color: gray; width: 100px;}
+#organisationsdirectory table.entries tr.englishEquivalent td {font-style: italic;}
+#organisationsdirectory h3 {margin-top: 2.5em;}
+#organisationsdirectory .jumplist {margin-bottom: 1.5em;}
+#organisationsdirectory .search input.searchbox {font-size: 1.4em; color: #603; padding: 4px;}
+#organisationsdirectory ul.filtering {margin-top: 1.5em;}
+#organisationsdirectory ul.filtering .selected {font-weight: bold;}
+
