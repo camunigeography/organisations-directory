@@ -2,7 +2,7 @@
 
 # Load using:
 #	# Organisations directory
-#	Include /path/to/organisations-directory/.httpd.conf.extract
+#	Include /path/to/organisations-directory/.httpd.conf.extract.txt
 #	Use MacroOrganisationsDirectory /resources/directory "Organisations directory"
 
 
