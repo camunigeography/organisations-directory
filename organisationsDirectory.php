@@ -353,8 +353,7 @@ class organisationsDirectory extends frontControllerApplication
 	# Wrapper function to create a jump form to switch between pages
 	private function jumpForm ($country)
 	{
-		pureContent::jumplistProcessor ();
-		return $html = pureContent::htmlJumplist ($this->countries, $country, $this->baseUrl . '/', $name = 'jumplist', $parentTabLevel = 0, $class = 'jumplist', $introductoryText = "Go to: <a href=\"{$this->baseUrl}/{$this->typeUrlPart}" . "\">Introductory page</a> or country:", $valueSubstitution = "{$this->baseUrl}/{$this->typeUrlPart}%value.html");
+		return $html = application::htmlJumplist ($this->countries, $country, $this->baseUrl . '/', $name = 'jumplist', $parentTabLevel = 0, $class = 'jumplist', $introductoryText = "Go to: <a href=\"{$this->baseUrl}/{$this->typeUrlPart}" . "\">Introductory page</a> or country:", $valueSubstitution = "{$this->baseUrl}/{$this->typeUrlPart}%value.html");
 	}
 	
 	
@@ -369,8 +368,7 @@ class organisationsDirectory extends frontControllerApplication
 		}
 		
 		# Return the HTML
-		pureContent::jumplistProcessor ();
-		return $html = pureContent::htmlJumplist ($values, '', $this->baseUrl . '/', 'jumplist', $parentTabLevel = 0, $class = 'jumplist', $introductoryText = 'Jump down to:');
+		return $html = application::htmlJumplist ($values, '', $this->baseUrl . '/', 'jumplist', $parentTabLevel = 0, $class = 'jumplist', $introductoryText = 'Jump down to:');
 	}
 	
 	
