@@ -1,5 +1,6 @@
 
 #organisationsdirectory p.adminloginlink {float: right;}
+#organisationsdirectory p.loggedinas {float: none; text-align: right;}
 #organisationsdirectory table.countrylisting {margin-top: 15px;}
 #organisationsdirectory table.countrylisting td {vertical-align: top; padding-right: 25px;}
 #organisationsdirectory table.entries {width: 99%;}
