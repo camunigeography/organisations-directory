@@ -150,7 +150,7 @@ class organisationsDirectory extends frontControllerApplication
 			  `collections` text COLLATE utf8mb4_unicode_ci COMMENT 'Collections',
 			  `publications` text COLLATE utf8mb4_unicode_ci COMMENT 'Publications',
 			  `notes` text COLLATE utf8mb4_unicode_ci COMMENT 'Notes',
-			  `unapproved` int(1) DEFAULT NULL COMMENT 'Hidden (i.e. unapproved/deleted)',
+			  `unapproved` TINYINT DEFAULT NULL COMMENT 'Hidden? (i.e. unapproved/deleted)',
 			  `userId` int(11) DEFAULT NULL COMMENT 'User ID',
 			  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Automatic timestamp',
 			  PRIMARY KEY (`id`)
