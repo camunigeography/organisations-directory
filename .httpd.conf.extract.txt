@@ -15,6 +15,9 @@
 	# Front controller application support
 	Use MacroFrontControllerApplication "$baseUrl/" "$description"
 	
+	# Editing
+	Use MacroSinenomineEmbeddedWholeDb "$baseUrl" "/data" "editing"
+	
 	# Application routing
 	RewriteRule ^$baseUrl/add.html$ $baseUrl/index.html?action=add [L]
 	RewriteRule ^$baseUrl/$ $baseUrl/index.html?action=home [L,QSA]

@@ -17,6 +17,7 @@ class organisationsDirectory extends frontControllerApplication
 			'table'						=> 'organisations',
 			'div'						=> 'organisationsdirectory',
 			'administrators'			=> true,
+			'useEditing'				=> true,
 			'organisationName'			=> NULL,		// For e-mail signature
 			'siteEmail'					=> NULL,
 			'theme'						=> NULL,		// E.g. 'polar'
@@ -93,6 +94,13 @@ class organisationsDirectory extends frontControllerApplication
 				'url' => 'edit/%1/',
 				'usetab' => 'update',
 				'authentication' => true,
+			),
+			'editing' => array (
+				'description' => 'Data editing',
+				'url' => 'data/',
+				'tab' => 'Data editing',
+				'icon' => 'pencil',
+				'administrator' => true,
 			),
 			'manager' => array (
 				'description' => 'Assign manager of organisation',
@@ -927,7 +935,7 @@ class organisationsDirectory extends frontControllerApplication
 			'formCompleteText' => false,
 			'databaseConnection' => $this->databaseConnection,
 			'antispam'	=> true,
-			'emailIntroductoryText' => ($record ? 'This entry has been updated by its manager:' : "A new submission has been made. Please review it at\nhttp://sinenomine.geog.cam.ac.uk/{$this->settings['database']}/{$this->settings['table']}/all.html"),
+			'emailIntroductoryText' => ($record ? 'This entry has been updated by its manager:' : "A new submission has been made. Please review it at\n{$_SERVER['_SITE_URL']}{$this->baseUrl}/data/organisations/"),
 			'rows' => 7,
 			'cols' => 50,
 			'unsavedDataProtection' => true,
@@ -1046,6 +1054,28 @@ class organisationsDirectory extends frontControllerApplication
 		
 		# Run the main settings system with the overriden attributes
 		return parent::settings ($dataBindingSettingsOverrides);
+	}
+	
+	
+	# Admin editing section, substantially delegated to the sinenomine editing component
+	public function editing ($attributes = array (), $deny = false, $sinenomineExtraSettings = array ())
+	{
+		# Define sinenomine settings
+		$sinenomineExtraSettings = array (
+			'simpleJoin' => true,
+			'int1ToCheckbox' => true,
+			'orderby' => array ('organisations' => 'id DESC'),		// Most recent first, as most likely to be needing review
+		);
+		
+		# Define tables to deny editing for
+		$deny[$this->settings['database']] = array (
+			'administrators',
+			'settings',
+			'users',
+		);
+		
+		# Delegate to the default editor, which will echo the HTML
+		parent::editing ($attributes = array (), $deny, $sinenomineExtraSettings);
 	}
 }
 

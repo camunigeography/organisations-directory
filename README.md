@@ -27,6 +27,7 @@ Dependencies
 * [csv.php CSV manipulation library](https://download.geog.cam.ac.uk/projects/csv/)
 * [frontControllerApplication.php front controller application implementation library](https://download.geog.cam.ac.uk/projects/frontcontrollerapplication/)
 * [pureContent.php general environment library](https://download.geog.cam.ac.uk/projects/purecontent/)
+* sinenomine.php sineNomine database editor
 * [ultimateForm.php form library](https://download.geog.cam.ac.uk/projects/ultimateform/)
 * [FamFamFam Silk Icons set](http://www.famfamfam.com/lab/icons/silk/)
 
