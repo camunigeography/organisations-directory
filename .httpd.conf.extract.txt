@@ -10,7 +10,9 @@
 <Macro MacroOrganisationsDirectory $baseUrl $description>
 	
 	# SSO (Single Sign-On location) environment flag to pass to applications - not in use, as uses internal login
-	SetEnv SINGLE_SIGN_ON_ENABLED 0
+	<Location $baseUrl>
+		SetEnv SINGLE_SIGN_ON_ENABLED 0
+	</Location>
 	
 	# Front controller application support
 	Use MacroFrontControllerApplication "$baseUrl/" "$description"
