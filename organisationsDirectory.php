@@ -131,7 +131,7 @@ class organisationsDirectory extends frontControllerApplication
 			  `active` enum('','Yes','No') NOT NULL DEFAULT 'Yes' COMMENT 'Currently active?',
 			  `privilege` enum('Administrator','Restricted administrator') NOT NULL DEFAULT 'Administrator' COMMENT 'Administrator level',
 			  PRIMARY KEY (`username`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='System administrators';
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='System administrators';
 			
 			CREATE TABLE IF NOT EXISTS `countries` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -139,7 +139,7 @@ class organisationsDirectory extends frontControllerApplication
 			  `abbreviatedName` varchar(255) DEFAULT NULL,
 			  `suppressed` TINYINT NULL DEFAULT NULL COMMENT 'Results suppressed?'
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 			
 			CREATE TABLE IF NOT EXISTS `organisations` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique key',
@@ -163,12 +163,12 @@ class organisationsDirectory extends frontControllerApplication
 			  `userId` int(11) DEFAULT NULL COMMENT 'User ID',
 			  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Automatic timestamp',
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 			
 			CREATE TABLE IF NOT EXISTS `settings` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Automatic key (ignored)',
 			  PRIMARY KEY (`id`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Settings';
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Settings';
 			
 			CREATE TABLE IF NOT EXISTS `users` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Automatic key',
@@ -180,7 +180,7 @@ class organisationsDirectory extends frontControllerApplication
 			  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp',
 			  PRIMARY KEY (`id`),
 			  UNIQUE KEY `email` (`email`)
-			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='Users';
+			) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci COMMENT='Users';
 		";
 	}
 	
