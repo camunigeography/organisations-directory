@@ -137,6 +137,7 @@ class organisationsDirectory extends frontControllerApplication
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
 			  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
 			  `abbreviatedName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+			  `suppressed` TINYINT NULL DEFAULT NULL COMMENT 'Results suppressed?'
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
 			
@@ -386,6 +387,12 @@ class organisationsDirectory extends frontControllerApplication
 		# Start the HTML
 		$html  = '';
 		
+		# Check if the country's results should be suppressed
+		if ($this->suppressResults ($country)) {
+			$html .= "\n<p>Results from this country are currently unavailable.</p>";
+			return $html;
+		}
+		
 		# Add tabs to the same country for other types
 		$html .= $this->crossCountryTabs ($country);
 		
@@ -495,6 +502,21 @@ class organisationsDirectory extends frontControllerApplication
 		
 		# Return the HTML
 		return $html;
+	}
+	
+	
+	# Function to determine whether the results for a country are suppressed
+	private function suppressResults ($country)
+	{
+		# Get the country ID
+		$countryId = $this->countryIdFromMoniker ($country);
+		
+		# Determine any match
+		$conditions = array ('id' => $countryId, 'suppressed' => '1');
+		$match = $this->databaseConnection->select ($this->settings['database'], 'countries', $conditions);
+		
+		# Return a match
+		return ($match);
 	}
 	
 	
