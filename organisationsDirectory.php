@@ -127,38 +127,38 @@ class organisationsDirectory extends frontControllerApplication
 	{
 		return "
 			CREATE TABLE IF NOT EXISTS `administrators` (
-			  `username` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Username',
-			  `active` enum('','Yes','No') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Yes' COMMENT 'Currently active?',
-			  `privilege` enum('Administrator','Restricted administrator') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Administrator' COMMENT 'Administrator level',
+			  `username` varchar(191) NOT NULL COMMENT 'Username',
+			  `active` enum('','Yes','No') NOT NULL DEFAULT 'Yes' COMMENT 'Currently active?',
+			  `privilege` enum('Administrator','Restricted administrator') NOT NULL DEFAULT 'Administrator' COMMENT 'Administrator level',
 			  PRIMARY KEY (`username`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci COMMENT='System administrators';
 			
 			CREATE TABLE IF NOT EXISTS `countries` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT,
-			  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-			  `abbreviatedName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+			  `name` varchar(255) NOT NULL,
+			  `abbreviatedName` varchar(255) DEFAULT NULL,
 			  `suppressed` TINYINT NULL DEFAULT NULL COMMENT 'Results suppressed?'
 			  PRIMARY KEY (`id`)
 			) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8mb4_unicode_ci;
 			
 			CREATE TABLE IF NOT EXISTS `organisations` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Unique key',
-			  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Name',
-			  `type` enum('','libraries','museums','organisations') COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Type',
-			  `englishEquivalent` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'English equivalent of name',
+			  `name` varchar(255) NOT NULL COMMENT 'Name',
+			  `type` enum('','libraries','museums','organisations') NOT NULL COMMENT 'Type',
+			  `englishEquivalent` varchar(255) DEFAULT NULL COMMENT 'English equivalent of name',
 			  `countryId` int(4) NOT NULL COMMENT 'Country',
-			  `website` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Website',
-			  `contactName` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Contact name',
-			  `address` text COLLATE utf8mb4_unicode_ci COMMENT 'Address',
-			  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'E-mail',
-			  `telephone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Telephone',
-			  `fax` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Fax',
-			  `openToPublic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Open to the public? / Opening hours',
-			  `yearOfFoundation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Year of foundation',
-			  `activities` text COLLATE utf8mb4_unicode_ci COMMENT 'Activities',
-			  `collections` text COLLATE utf8mb4_unicode_ci COMMENT 'Collections',
-			  `publications` text COLLATE utf8mb4_unicode_ci COMMENT 'Publications',
-			  `notes` text COLLATE utf8mb4_unicode_ci COMMENT 'Notes',
+			  `website` varchar(255) DEFAULT NULL COMMENT 'Website',
+			  `contactName` varchar(255) DEFAULT NULL COMMENT 'Contact name',
+			  `address` text COMMENT 'Address',
+			  `email` varchar(255) DEFAULT NULL COMMENT 'E-mail',
+			  `telephone` varchar(255) DEFAULT NULL COMMENT 'Telephone',
+			  `fax` varchar(255) DEFAULT NULL COMMENT 'Fax',
+			  `openToPublic` varchar(255) DEFAULT NULL COMMENT 'Open to the public? / Opening hours',
+			  `yearOfFoundation` varchar(255) DEFAULT NULL COMMENT 'Year of foundation',
+			  `activities` text COMMENT 'Activities',
+			  `collections` text COMMENT 'Collections',
+			  `publications` text COMMENT 'Publications',
+			  `notes` text COMMENT 'Notes',
 			  `unapproved` TINYINT DEFAULT NULL COMMENT 'Hidden? (i.e. unapproved/deleted)',
 			  `userId` int(11) DEFAULT NULL COMMENT 'User ID',
 			  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT 'Automatic timestamp',
@@ -172,9 +172,9 @@ class organisationsDirectory extends frontControllerApplication
 			
 			CREATE TABLE IF NOT EXISTS `users` (
 			  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'Automatic key',
-			  `email` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Your e-mail address',
-			  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Password',
-			  `validationToken` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL COMMENT 'Token for validation or password reset',
+			  `email` varchar(191) NOT NULL COMMENT 'Your e-mail address',
+			  `password` varchar(255) NOT NULL COMMENT 'Password',
+			  `validationToken` varchar(255) DEFAULT NULL COMMENT 'Token for validation or password reset',
 			  `lastLoggedInAt` datetime DEFAULT NULL COMMENT 'Last logged in time',
 			  `validatedAt` datetime DEFAULT NULL COMMENT 'Time when validated',
 			  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'Timestamp',
