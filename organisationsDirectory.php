@@ -980,7 +980,7 @@ class organisationsDirectory extends frontControllerApplication
 			'data' => $record,
 			'attributes' => array (
 				'type' => array ('valuesNamesAutomatic' => true, ),
-				'website' => array ('regexp' => '^http://', 'description' => 'Must begin http://'),
+				'website' => array ('regexp' => '^https?://', 'description' => 'Must begin https://'),
 				'email' => array ('description' => 'E-mail addresses on the site will appear obfuscated, to prevent harvesting by spammers.'),
 				'name' => array ('description' => "The organisation's name, in its native language where appropriate."),
 				'englishEquivalent' => array ('description' => "If the organisation's main name is in a non-English language, the English translation should be specified here."),
