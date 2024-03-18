@@ -13,7 +13,7 @@ $settings = array (
 );
 
 # Create the directory
-require_once ('organisations-directory/organisationsDirectory.php');
+require_once ('vendor/autoload.php');
 new organisationsDirectory ($settings);
 
 ?>

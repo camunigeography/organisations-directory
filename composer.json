@@ -1,0 +1,16 @@
+{
+    "name": "camunigeography/organisations-directory",
+    "description": "Organisations directory system",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "stable",
+    "require": {
+        "libpurecontent/frontcontrollerapplication": "^1.13",
+        "libpurecontent/ultimateform": "^1.29",
+        "libpurecontent/csv": "^1.5",
+        "libpurecontent/application": "^1.9"
+    },
+    "autoload": {
+        "files": ["organisationsDirectory.php"]
+    }
+}

@@ -1,7 +1,6 @@
 <?php
 
 # Define a class for obtaining an online directory
-require_once ('frontControllerApplication.php');
 class organisationsDirectory extends frontControllerApplication
 {
 	# Function to assign defaults additional to the general application defaults
@@ -602,7 +601,6 @@ class organisationsDirectory extends frontControllerApplication
 		$email = (isSet ($_POST['form']) ? urlencode ($_POST['form']['email']) : false);
 		
 		# Create the form
-		require_once ('ultimateForm.php');
 		$form = new form (array (
 			'displayRestrictions' => false,
 			'formCompleteText' => 'Thank you for your request. We will be in touch shortly.',
@@ -667,7 +665,6 @@ class organisationsDirectory extends frontControllerApplication
 		}
 		
 		# Create the form
-		require_once ('ultimateForm.php');
 		$form = new form (array (
 			'displayRestrictions' => false,
 			'formCompleteText' => false,
@@ -951,7 +948,6 @@ class organisationsDirectory extends frontControllerApplication
 		}
 		
 		# Create the form
-		require_once ('ultimateForm.php');
 		$form = new form (array (
 			'displayRestrictions' => false,
 			'formCompleteText' => false,
@@ -1057,7 +1053,6 @@ class organisationsDirectory extends frontControllerApplication
 		$headerLabels = $this->databaseConnection->getHeadings ($this->settings['database'], $this->settings['table']);
 		
 		# Serve the CSV
-		require_once ('csv.php');
 		csv::serve ($data, $filenameBase = 'organisationsdata', $timestamp = true, $headerLabels);
 	}
 	
