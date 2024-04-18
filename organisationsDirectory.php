@@ -465,8 +465,11 @@ class organisationsDirectory extends frontControllerApplication
 			# Apply adjustments to the data
 			if ($record['englishEquivalent']) {$record['englishEquivalent'] = '[' . $record['englishEquivalent'] . ']';}
 			$record['email'] = application::encodeEmailAddress ($record['email']);
-			if (isSet ($record['notes'])) {
-				$record['notes'] = application::formatTextBlock ($record['notes']);
+			$multilineFields = array ('address', 'activities', 'collections', 'publications', 'notes');
+			foreach ($multilineFields as $multilineField) {
+				if (isSet ($record[$multilineField])) {
+					$record[$multilineField] = application::formatTextBlock ($record[$multilineField]);
+				}
 			}
 			if ($record['website']) {
 				$record['website'] = '<a href="' . $record['website'] . '" target="_blank">' . application::urlPresentational ($record['website']) . '</a>';
