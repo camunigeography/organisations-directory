@@ -487,7 +487,16 @@ class organisationsDirectory extends frontControllerApplication
 			
 			# Register the HTML
 			$records[$title] = $record;
-		}
+			
+			# Convert remaining entities
+			#!# htmlTableKeyed needs support for $allowHtml to specify fields instead
+			$htmlFields = array_merge ($multilineFields, array ('type', 'website', 'Edit'));
+			foreach ($record as $key => $value) {
+				if (!in_array ($key, $htmlFields)) {
+					$record[$key] = htmlspecialchars ($value);
+				}
+			}
+	}
 		
 		# Get the headings
 		$headings = $this->databaseConnection->getHeadings ($this->settings['database'], $this->settings['table']);
