@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ecad13c861ee4fd80c0e2784afa5f619",
+    "content-hash": "b92936dc26722c4705552673969e792c",
     "packages": [
         {
             "name": "camunigeography/camunidata",
@@ -206,16 +206,16 @@
         },
         {
             "name": "libpurecontent/frontcontrollerapplication",
-            "version": "v1.13.7",
+            "version": "v1.13.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/libpurecontent/frontcontrollerapplication.git",
-                "reference": "8abafe27f6f7c3e4baa8c56b3a57f4c578d99578"
+                "reference": "8dd4f639da873cb2c0846ae0f414a7364a7d000a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/libpurecontent/frontcontrollerapplication/zipball/8abafe27f6f7c3e4baa8c56b3a57f4c578d99578",
-                "reference": "8abafe27f6f7c3e4baa8c56b3a57f4c578d99578",
+                "url": "https://api.github.com/repos/libpurecontent/frontcontrollerapplication/zipball/8dd4f639da873cb2c0846ae0f414a7364a7d000a",
+                "reference": "8dd4f639da873cb2c0846ae0f414a7364a7d000a",
                 "shasum": ""
             },
             "require": {
@@ -226,7 +226,7 @@
                 "libpurecontent/sinenomine": "^1.1",
                 "libpurecontent/ultimateform": "^1.29",
                 "libpurecontent/useraccount": "^1.7",
-                "smarty/smarty": "^4.5"
+                "smarty/smarty": "^4.5.3"
             },
             "type": "library",
             "autoload": {
@@ -246,9 +246,9 @@
             "description": "PHP library frontControllerApplication within the pureContent library suite",
             "support": {
                 "issues": "https://github.com/libpurecontent/frontcontrollerapplication/issues",
-                "source": "https://github.com/libpurecontent/frontcontrollerapplication/tree/v1.13.7"
+                "source": "https://github.com/libpurecontent/frontcontrollerapplication/tree/v1.13.8"
             },
-            "time": "2024-06-04T17:07:39+00:00"
+            "time": "2024-12-03T11:55:28+00:00"
         },
         {
             "name": "libpurecontent/image",
