@@ -859,7 +859,8 @@ class organisationsDirectory extends frontControllerApplication
 		. ';';
 		
 		# End if no results
-		if (!$data = $this->databaseConnection->getData ($query, "{$this->settings['database']}.{$this->settings['table']}", true, array ('searchPhrase' => '%' . $searchPhrase . '%'))) {
+		$preparedStatementValues = array ('searchPhrase' => '%' . $searchPhrase . '%');
+		if (!$data = $this->databaseConnection->getData ($query, "{$this->settings['database']}.{$this->settings['table']}", true, $preparedStatementValues)) {
 			return $html = "\n<p>Sorry, no items were found.</p>";
 		}
 		
@@ -929,7 +930,7 @@ class organisationsDirectory extends frontControllerApplication
 		$target = $this->searchTargetUrl ($this->type);
 		return "\n\n" . '<form method="get" action="' . $target . '" class="' . ($minisearch ? 'minisearch' : 'search') . '" name="' . ($minisearch ? 'minisearch' : 'search') . '">
 			<img src="/images/icons/magnifier.png" alt="" class="icon">
-			<input class="searchbox" name="' . $this->settings['queryTerm'] . '" type="search" size="' . ($minisearch ? '20' : '35') . '" value="' . $query . '" placeholder="Search ' . ($this->type ? htmlspecialchars ($this->type) : 'the directory') . '"' . ($autofocus ? ' autofocus="autofocus"' : '') . ' />
+			<input class="searchbox" name="' . $this->settings['queryTerm'] . '" type="search" size="' . ($minisearch ? '20' : '35') . '" value="' . htmlspecialchars ($query) . '" placeholder="Search ' . ($this->type ? htmlspecialchars ($this->type) : 'the directory') . '"' . ($autofocus ? ' autofocus="autofocus"' : '') . ' />
 			<input value="Search!" accesskey="s" type="submit" class="button" />
 		</form>' . "\n";
 	}
