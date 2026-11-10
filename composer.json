@@ -5,10 +5,10 @@
     "license": "GPL-3.0-only",
     "minimum-stability": "stable",
     "require": {
-        "libpurecontent/frontcontrollerapplication": "^1.14",
-        "libpurecontent/ultimateform": "^1.31",
-        "libpurecontent/csv": "^1.7",
-        "libpurecontent/application": "^1.9"
+        "libpurecontent/frontcontrollerapplication": "^1.20",
+        "libpurecontent/ultimateform": "^1.34",
+        "libpurecontent/csv": "^1.8",
+        "libpurecontent/application": "^1.10"
     },
     "autoload": {
         "files": ["organisationsDirectory.php"]
