@@ -24,7 +24,8 @@ class organisationsDirectory extends frontControllerApplication
 			'queryTerm'					=> 'q',
 			'homePageTextIntroduction'	=> false,
 			'homePageTextAppended'		=> array (),	// type => text
-			'internalAuth'				=> true,
+			'idpAuth'					=> false,
+			'localAuth'					=> true,
 			'tabUlClass'				=> 'tabsflat',
 		);
 		
@@ -1083,7 +1084,7 @@ class organisationsDirectory extends frontControllerApplication
 		);
 		
 		# Run the main settings system with the overriden attributes
-		return parent::settings ($dataBindingSettingsOverrides);
+		echo parent::settings ($dataBindingSettingsOverrides);
 	}
 	
 	
@@ -1105,7 +1106,7 @@ class organisationsDirectory extends frontControllerApplication
 		);
 		
 		# Delegate to the default editor, which will echo the HTML
-		parent::editing ($attributes = array (), $deny, $sinenomineExtraSettings);
+		echo parent::editing ($attributes = array (), $deny, $sinenomineExtraSettings);
 	}
 }
 
