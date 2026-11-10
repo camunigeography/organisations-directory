@@ -24,7 +24,7 @@ class organisationsDirectory extends frontControllerApplication
 			'queryTerm'					=> 'q',
 			'homePageTextIntroduction'	=> false,
 			'homePageTextAppended'		=> array (),	// type => text
-			'idpAuth'					=> false,
+			'idpAuth'					=> true,
 			'localAuth'					=> true,
 			'tabUlClass'				=> 'tabsflat',
 		);
